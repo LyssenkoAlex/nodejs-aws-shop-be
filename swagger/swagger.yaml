@@ -1,0 +1,59 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: Sample API
+host: 9r9b0i6sig.execute-api.us-east-1.amazonaws.com
+basePath: /prod
+schemes:
+  - https
+paths:
+  /products:
+    get:
+      summary: Get Products
+      responses:
+        200:
+          description: Successful response
+          schema:
+            type: object
+            properties:
+              products:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    price:
+                      type: number
+                      format: float
+                      example: 36.85
+                    id:
+                      type: string
+                      example: "09c9c537-2f2a-4cd3-8fb5-87f177f3e231"
+                    name:
+                      type: string
+                      example: "Plum Shoes"
+
+  /products/{id}:
+    get:
+      summary: Get Product by ID
+      parameters:
+        - name: id
+          in: path
+          description: Product ID
+          required: true
+          type: string
+      responses:
+        200:
+          description: Successful response
+          schema:
+            type: object
+            properties:
+              price:
+                type: number
+                format: float
+                example: 36.85
+              id:
+                type: string
+                example: "09c9c537-2f2a-4cd3-8fb5-87f177f3e231"
+              name:
+                type: string
+                example: "Plum Shoes"
