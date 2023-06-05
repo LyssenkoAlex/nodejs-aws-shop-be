@@ -24,7 +24,11 @@ const lambdaHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayPro
 
     return {
       statusCode: 400,
-      headers: { "content-type": "application/json" },
+      headers: {
+        "Access-Control-Allow-Headers" : "Content-Type",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "*"
+      },
       body: JSON.stringify({ message: "Missing 'id' parameter in path" }),
     };
   }
@@ -47,7 +51,11 @@ const lambdaHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayPro
 
     return {
       statusCode: 200,
-      headers: { "content-type": "application/json" },
+      headers: {
+        "Access-Control-Allow-Headers" : "Content-Type",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "*"
+      },
       body: JSON.stringify(result),
     };
   } catch (error) {
