@@ -1,6 +1,4 @@
-// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
-// SPDX-License-Identifier: MIT-0
-// blob/main/src/api/get-products.ts
+
 import { APIGatewayProxyEvent, APIGatewayProxyResult} from "aws-lambda";
 import { DynamoDbStore } from "../store/dynamodb/dynamodb-store";
 import { ProductStore } from "../store/product-store";
@@ -25,7 +23,11 @@ const lambdaHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayPro
 
     return {
       statusCode: 200,
-      headers: { "content-type": "application/json" },
+      headers: {
+        "Access-Control-Allow-Headers" : "Content-Type",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "*"
+      },
       body: `{"products":${JSON.stringify(result)}}`,
     };
   } catch (error) {
